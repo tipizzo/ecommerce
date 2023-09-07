@@ -13,12 +13,13 @@ const App = () => {
   }
 
   const fetchCart = async () => {
+
     setCart(await commerce.cart.retrieve());
      
   }
 
   const handleAddToCart = async (productId, quantity) => {
-    const item= await commerce.cart.add(productId, quantity)
+    const item = await commerce.cart.add(productId, quantity)
 
     setCart(item.cart);
   }
@@ -33,9 +34,9 @@ const App = () => {
 
   return (
     <div>
-        <Navbar totalItems={cart.total_items}/>
-        {/* <Products products={products} onAddToCart={handleAddToCart}/> */}
-        <Cart cart={cart} />
+        <Navbar totalItems={cart.total_items} />
+       {/* <Products products={products} onAddToCart={handleAddToCart}/> */}
+       <Cart cart={cart} />
     </div>
   )
 }
