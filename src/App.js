@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { commerce } from "./lib/commerce";
-import { Products, Navbar, Cart } from "./components";
+import { Products, Navbar, Cart, Checkout } from "./components";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
   }
 
   const fetchCart = async () => {
+
 
     setCart(await commerce.cart.retrieve());
      
@@ -53,7 +54,7 @@ const App = () => {
 
   return (
     <Router>
-      <div>
+      <div style={{display: 'flex'}}>
         <Navbar totalItems={cart.total_items} />
           <Routes>
               <Route exact path='/' element={<Products products={products} onAddToCart={handleAddToCart}/>} />
@@ -69,6 +70,9 @@ const App = () => {
                 } 
 
               />
+              <Route exact path='/checkout'>
+                  <Checkout />
+              </Route>
             
           </Routes>
       </div>
